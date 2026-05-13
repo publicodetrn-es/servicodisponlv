@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Ateliê Lapin | Eventos e Promoções</title>
+    <!-- Bootstrap 5 + Icons + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefaf5;
+            color: #2e241f;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, .display-font {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #b55b3c !important;
+        }
+        .navbar {
+            background-color: #ffffffdd;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #4a3b32 !important;
+            margin: 0 0.5rem;
+            transition: 0.2s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #b55b3c !important;
+            border-bottom: 2px solid #b55b3c;
+        }
+        .btn-primary-custom {
+            background-color: #b55b3c;
+            border: none;
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.25s;
+        }
+        .btn-primary-custom:hover {
+            background-color: #8e432a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(181,91,60,0.25);
+        }
+        .btn-outline-custom {
+            border: 2px solid #b55b3c;
+            background: transparent;
+            color: #b55b3c;
+            border-radius: 40px;
+            font-weight: 600;
+            padding: 8px 24px;
+        }
+        .btn-outline-custom:hover {
+            background-color: #b55b3c;
+            color: white;
+        }
+        .hero-section {
+            background: linear-gradient(120deg, #fff3e8 0%, #ffe6d5 100%);
+            padding: 80px 0 70px;
+            border-bottom: 1px solid #ffddc4;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2e241f;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #b55b3c;
+            border-radius: 4px;
+        }
+        .card-evento, .card-promo {
+            border: none;
+            border-radius: 28px;
+            background: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .card-evento:hover, .card-promo:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(181,91,60,0.2);
+        }
+        .badge-date {
+            background-color: #ffede3;
+            color: #b55b3c;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+        }
+        .info-rodape {
+            background-color: #2b241f;
+            color: #ebdbd0;
+        }
+        .social-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #ebdbd0;
+            transition: 0.2s;
+        }
+        .social-icon:hover {
+            color: #b55b3c;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: #ebdbd0;
+            font-size: 0.9rem;
+        }
+        .footer-links a:hover {
+            color: #b55b3c;
+            text-decoration: underline;
+        }
+        .info-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.2rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #faeadf;
+        }
+        .circulo-icone {
+            background-color: #fff1e9;
+            width: 55px;
+            height: 55px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .circulo-icone i {
+            font-size: 28px;
+            color: #b55b3c;
+        }
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 50px 0;
+                text-align: center;
+            }
+            .section-title:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVEGAÇÃO -->
+<nav class="navbar navbar-expand-lg fixed-top py-3">
+    <div class="container">
+        <a class="navbar-brand" href="#">atelie<span style="color:#f2a07e;">✧</span>lapin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                <li class="nav-item"><a class="nav-link active" href="#inicio">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="#promocoes">Promoções</a></li>
+                <li class="nav-item"><a class="nav-link" href="#eventos">Eventos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+            </ul>
+            <a href="#contato" class="btn btn-primary-custom ms-lg-3 mt-3 mt-lg-0">Orçamento</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO / INÍCIO -->
+<section id="inicio" class="hero-section" style="margin-top: 76px;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="badge bg-white text-dark px-3 py-2 rounded-pill shadow-sm" style="color:#b55b3c;"><i class="bi bi-calendar-heart"></i> Desde 2010 criando memórias</span>
+                <h1 class="display-3 fw-bold mt-3">Transformamos sonhos em <span style="color:#b55b3c;">eventos inesquecíveis</span></h1>
+                <p class="lead mt-3 text-muted">Planejamento criativo, promoções exclusivas e uma pitada de magia para cada celebração. Há 14 anos encantando São Paulo e o Brasil.</p>
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="#promocoes" class="btn btn-primary-custom"><i class="bi bi-gift-fill me-1"></i> Ver ofertas</a>
+                    <a href="#eventos" class="btn btn-outline-custom"><i class="bi bi-calendar-week"></i> Próximos eventos</a>
+                </div>
+                <div class="row mt-5 pt-2">
+                    <div class="col-4">
+                        <div class="circulo-icone mx-auto mx-lg-0" style="width: 48px; height: 48px;"><i class="bi bi-emoji-laughing fs-3"></i></div>
+                        <p class="fw-bold mb-0">+280</p>
+                        <small class="text-secondary">Eventos realizados</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="circulo-icone mx-auto mx-lg-0" style="width: 48px; height: 48px;"><i class="bi bi-star-fill fs-3"></i></div>
+                        <p class="fw-bold mb-0">100%</p>
+                        <small class="text-secondary">Clientes satisfeitos</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="circulo-icone mx-auto mx-lg-0" style="width: 48px; height: 48px;"><i class="bi bi-geo-alt-fill fs-3"></i></div>
+                        <p class="fw-bold mb-0">São Paulo, SP</p>
+                        <small class="text-secondary">Atendimento global</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="bg-white rounded-4 shadow-lg p-3 d-inline-block">
+                    <i class="bi bi-megaphone-fill display-1" style="color:#d47c5a;"></i>
+                    <h4 class="mt-3">Storytelling · Eventos</h4>
+                    <p class="text-muted">Momentos que viram histórias</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO PROMOÇÕES -->
+<section id="promocoes" class="py-5">
+    <div class="container py-4">
+        <div class="text-center text-lg-start">
+            <h2 class="section-title">🔥 Promoções imperdíveis</h2>
+            <p class="text-muted mb-5">Descontos especiais e condições exclusivas para transformar seu evento em realidade.</p>
+        </div>
+        <div class="row g-4">
+            <!-- promo 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card-promo p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <span class="badge bg-danger text-white rounded-pill px-3 py-2">-20% OFF</span>
+                        <i class="bi bi-tags fs-2" style="color:#b55b3c;"></i>
+                    </div>
+                    <h4 class="mt-3 fw-bold">Pacote Casamento dos Sonhos</h4>
+                    <p class="text-secondary">Decoração temática, cerimonial personalizado e consultoria completa. Válido para datas em 2025.</p>
+                    <div class="mt-auto">
+                        <p class="mb-0"><i class="bi bi-check-circle-fill text-success me-1"></i> Conte com nossa equipe lapin</p>
+                        <p class="mb-2"><i class="bi bi-calendar-check"></i> Agende até 30/06</p>
+                        <a href="#contato" class="btn btn-outline-custom w-100 mt-2">Garantir desconto</a>
+                    </div>
+                </div>
+            </div>
+            <!-- promo 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card-promo p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <span class="badge bg-warning text-dark rounded-pill px-3 py-2">★ Lançamento</span>
+                        <i class="bi bi-music-note-beamed fs-2" style="color:#b55b3c;"></i>
+                    </div>
+                    <h4 class="mt-3 fw-bold">Promoção Corporativa</h4>
+                    <p class="text-secondary">Eventos empresariais, coffee breaks personalizados + 10% off na sonorização e iluminação.</p>
+                    <div class="mt-auto">
+                        <p><i class="bi bi-building"></i>  Empresas associadas ganham brindes exclusivos</p>
+                        <a href="#contato" class="btn btn-outline-custom w-100 mt-2">Solicitar cotação</a>
+                    </div>
+                </div>
+            </div>
+            <!-- promo 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card-promo p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <span class="badge bg-info text-dark rounded-pill px-3 py-2">FIDELIDADE</span>
+                        <i class="bi bi-gem fs-2" style="color:#b55b3c;"></i>
+                    </div>
+                    <h4 class="mt-3 fw-bold">Clube de Benefícios</h4>
+                    <p class="text-secondary">Assine nosso plano anual e ganhe 2 eventos promocionais gratuitos + mimos exclusivos.</p>
+                    <div class="mt-auto">
+                        <p><i class="bi bi-cake2"></i> Festas de aniversário com brinde especial</p>
+                        <a href="#contato" class="btn btn-outline-custom w-100 mt-2">Assinar agora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-warning bg-warning bg-opacity-10 border-0 mt-5 rounded-4 d-flex align-items-center gap-3 flex-wrap">
+            <i class="bi bi-megaphone fs-1"></i>
+            <div><strong>⚠️ Promoção relâmpago:</strong> 15% extra para primeiro evento contratado via site até 30/11! Use o cupom <span class="badge bg-dark">LAPIN15</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO EVENTOS -->
+<section id="eventos" class="py-5 bg-light" style="background-color: #fff8f2 !important;">
+    <div class="container py-4">
+        <div class="text-center text-lg-start">
+            <h2 class="section-title">✨ Próximos Eventos & Destaques</h2>
+            <p class="text-muted mb-5">Agenda mágica do Ateliê Lapin. Participe ou inspire-se para o seu projeto.</p>
+        </div>
+        <div class="row g-5">
+            <!-- card evento 1 -->
+            <div class="col-md-6">
+                <div class="card-evento d-flex flex-column flex-md-row p-3 h-100">
+                    <div class="flex-shrink-0 text-center p-3 bg-white rounded-4 me-md-3 mb-3 mb-md-0" style="min-width: 100px;">
+                        <i class="bi bi-calendar-heart fs-1" style="color:#b55b3c;"></i>
+                        <span class="badge-date d-block mt-2">15 Dez 2024</span>
+                    </div>
+                    <div class="flex-grow-1 p-2">
+                        <h4>✨ Feira de Presentes Criativos</h4>
+                        <p>Venha conferir artesãos, tendências de decoração e dicas exclusivas para festas. Entrada gratuita.</p>
+                        <div><i class="bi bi-geo-alt-fill"></i> Espaço Lapin - Rua Antonio Joao, 109 - São Paulo</div>
+                        <div class="mt-2"><i class="bi bi-clock"></i> 10h às 18h | <i class="bi bi-ticket-perforated"></i> Ingressos solidários</div>
+                        <a href="#" class="btn btn-sm btn-primary-custom mt-3 px-4">Confirmar presença</a>
+                    </div>
+                </div>
+            </div>
+            <!-- card evento 2 -->
+            <div class="col-md-6">
+                <div class="card-evento d-flex flex-column flex-md-row p-3 h-100">
+                    <div class="flex-shrink-0 text-center p-3 bg-white rounded-4 me-md-3 mb-3 mb-md-0" style="min-width: 100px;">
+                        <i class="bi bi-mic fs-1" style="color:#b55b3c;"></i>
+                        <span class="badge-date d-block mt-2">10 Jan 2025</span>
+                    </div>
+                    <div class="flex-grow-1 p-2">
+                        <h4>🎤 Workshop: Storytelling em Eventos</h4>
+                        <p>Aprenda a criar narrativas sensoriais e experiências imersivas. Ministrado por especialistas do Ateliê Lapin.</p>
+                        <p><i class="bi bi-mortarboard"></i> Certificado incluso + coffee temático</p>
+                        <a href="#" class="btn btn-sm btn-outline-custom mt-2">Inscreva-se (vagas limitadas)</a>
+                    </div>
+                </div>
+            </div>
+            <!-- card evento 3 bônus -->
+            <div class="col-md-6">
+                <div class="card-evento d-flex flex-column flex-md-row p-3 h-100">
+                    <div class="flex-shrink-0 text-center p-3 bg-white rounded-4 me-md-3 mb-3 mb-md-0" style="min-width: 100px;">
+                        <i class="bi bi-balloon-heart fs-1" style="color:#b55b3c;"></i>
+                        <span class="badge-date d-block mt-2">22 Fev 2025</span>
+                    </div>
+                    <div class="flex-grow-1 p-2">
+                        <h4>🎈Festa Infantil Experiência Lapin</h4>
+                        <p>Dia especial para pequenos: recreação, oficina de origami e lanche temático. Pacote promocional para famílias.</p>
+                        <div><i class="bi bi-people-fill"></i> Desconto para grupos acima de 15 crianças</div>
+                        <a href="#" class="btn btn-sm btn-primary-custom mt-3 px-4">Reservar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-evento d-flex flex-column flex-md-row p-3 h-100">
+                    <div class="flex-shrink-0 text-center p-3 bg-white rounded-4 me-md-3 mb-3 mb-md-0" style="min-width: 100px;">
+                        <i class="bi bi-gift-fill fs-1" style="color:#b55b3c;"></i>
+                        <span class="badge-date d-block mt-2">Março 2025</span>
+                    </div>
+                    <div class="flex-grow-1 p-2">
+                        <h4>📦 Feira de Casamentos e Festas</h4>
+                        <p>Os melhores fornecedores, degustação de menus e descontos especiais em pacotes completos do Ateliê Lapin.</p>
+                        <div><i class="bi bi-cake"></i> Brindes e sorteios exclusivos para noivos</div>
+                        <a href="#" class="btn btn-sm btn-outline-custom mt-3">Me inscrever</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 text-center">
+            <a href="#contato" class="btn btn-primary-custom rounded-pill"><i class="bi bi-calendar2-week"></i> Agende seu evento personalizado</a>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO SOBRE + INFORMAÇÕES DA EMPRESA -->
+<section id="sobre" class="py-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+                <img src="https://placehold.co/600x500/fef2ea/b55b3c?text=Ateliê+Lapin" alt="atelie inspiração" class="img-fluid rounded-4 shadow-lg" style="object-fit: cover;">
+            </div>
+            <div class="col-lg-7">
+                <h2 class="section-title">Nossa história desde 2010</h2>
+                <p class="lead"><strong>Storytelling - Promoção e Eventos LTDA</strong>, sob o carinhoso nome <strong class="text-danger">Ateliê Lapin</strong>, nasceu para transformar cada celebração numa narrativa única.</p>
+                <div class="info-card mt-4">
+                    <div class="row row-cols-1 row-cols-sm-2 g-3">
+                        <div class="col"><i class="bi bi-calendar-check-fill me-2 text-primary"></i> <strong>Situação cadastral:</strong> Ativa desde 03/11/2010</div>
+                        <div class="col"><i class="bi bi-qr-code-scan me-2"></i> <strong>CNPJ:</strong> 10.985.615/0001-78</div>
+                        <div class="col"><i class="bi bi-building me-2"></i> <strong>Razão Social:</strong> Storytelling - Promoção e Eventos LTDA</div>
+                        <div class="col"><i class="bi bi-shop me-2"></i> <strong>Nome Fantasia:</strong> Atelie Lapin</div>
+                        <div class="col"><i class="bi bi-geo-alt-fill me-2"></i> <strong>Endereço:</strong> Rua Antonio Joao, 109 - Bairro do Limão</div>
+                        <div class="col"><i class="bi bi-pin-map-fill me-2"></i> <strong>Município:</strong> São Paulo - SP | CEP: 02553-050</div>
+                    </div>
+                </div>
+                <p class="mt-3 fs-6 text-secondary">Com mais de 14 anos de experiência, nosso Ateliê Lapin já realizou desde pequenas reuniões empresariais a grandes feiras e casamentos dos sonhos. Acreditamos que detalhes contam histórias e cada ícone, cor e textura foi pensada para emocionar.</p>
+                <div class="d-flex gap-3 mt-4">
+                    <i class="bi bi-instagram fs-2" style="color:#b55b3c;"></i>
+                    <i class="bi bi-whatsapp fs-2" style="color:#b55b3c;"></i>
+                    <i class="bi bi-facebook fs-2" style="color:#b55b3c;"></i>
+                    <span class="align-self-center text-muted">@atelielapin_eventos</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO CONTATO E INFRA E ÍCONES -->
+<section id="contato" class="py-5" style="background:#fbf5ef;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title d-inline-block">Vamos realizar seu evento?</h2>
+                <p class="text-muted mt-3">Fale com a gente e receba um diagnóstico criativo sem compromisso.</p>
+            </div>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-5">
+                <div class="bg-white p-4 rounded-4 shadow-sm">
+                    <h4><i class="bi bi-envelope-paper-fill" style="color:#b55b3c;"></i> Contato rápido</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-3"><i class="bi bi-telephone-fill me-2"></i> (11) 2456-7890 / (11) 98765-4321</li>
+                        <li class="mb-3"><i class="bi bi-envelope-fill me-2"></i> contato@atelielapin.com.br</li>
+                        <li class="mb-3"><i class="bi bi-whatsapp me-2"></i> WhatsApp: (11) 98765-4321</li>
+                        <li><i class="bi bi-clock-history"></i> Atendimento: Seg-Sex 9h-19h | Sáb 9h-14h</li>
+                    </ul>
+                    <hr>
+                    <div class="mt-3 text-center">
+                        <p class="mb-1"><i class="bi bi-geo-alt-fill"></i> Faça uma visita ao nosso ateliê:</p>
+                        <p class="fw-bold">Rua Antonio Joao, 109 - Bairro do Limão, São Paulo - SP, 02553-050</p>
+                        <a href="https://maps.google.com/?q=Rua+Antonio+Joao,+109,+Sao+Paulo" target="_blank" class="btn btn-sm btn-outline-custom"><i class="bi bi-map"></i> Ver no mapa</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="bg-white p-4 rounded-4 shadow-sm">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label class="form-label">Nome completo</label>
+                                <input type="text" class="form-control" placeholder="Seu nome">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label">E-mail</label>
+                                <input type="email" class="form-control" placeholder="email@exemplo.com">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Tipo de evento / Promoção desejada</label>
+                                <select class="form-select">
+                                    <option>Casamento / Festa de aniversário</option>
+                                    <option>Evento corporativo / Feira</option>
+                                    <option>Workshop / Lançamento</option>
+                                    <option>Quero uma promoção especial</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Mensagem</label>
+                                <textarea rows="3" class="form-control" placeholder="Conte sua ideia..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary-custom w-100" type="button"><i class="bi bi-send"></i> Enviar orçamento</button>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="small text-muted mt-3"><i class="bi bi-shield-check"></i> Retornamos em até 24h úteis. Garantia de resposta personalizada.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RODAPÉ COMPLETO -->
+<footer class="info-rodape pt-5 pb-4">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-4">
+                <h5 class="text-white">Ateliê Lapin</h5>
+                <p class="small">Storytelling - Promoção e Eventos LTDA | CNPJ: 10.985.615/0001-78</p>
+                <p><i class="bi bi-geo-alt-fill me-1"></i> Rua Antonio Joao, 109, Bairro do Limão - São Paulo/SP - 02553-050</p>
+                <p><i class="bi bi-calendar-check"></i> Data de fundação: 03/11/2010 – 14 anos de histórias.</p>
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-white">Navegação</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li class="mt-2"><a href="#promocoes">Promoções</a></li>
+                    <li class="mt-2"><a href="#eventos">Eventos</a></li>
+                    <li class="mt-2"><a href="#sobre">Sobre a empresa</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-white">Redes & newsletter</h5>
+                <div class="d-flex">
+                    <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-tiktok"></i></a>
+                </div>
+                <p class="mt-2 small">Receba promoções e eventos por e-mail:</p>
+                <div class="input-group">
+                    <input type="email" class="form-control form-control-sm" placeholder="seu@email.com">
+                    <button class="btn btn-sm btn-primary-custom" type="button">OK</button>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-4 opacity-25">
+        <div class="text-center small">© 2025 Ateliê Lapin · Todos os direitos reservados · Histórias que encantam, eventos que transformam.</div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
